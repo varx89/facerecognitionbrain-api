@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //home
-app.get('/', (req, res) => {/* res.send(database.users)*/});
+app.get('/', (req, res) => { res.send('it werks!') });
 
 //signin
 app.post('/signin', signin.handleSignin(db, bcrypt, bcryptSaltRounds));
