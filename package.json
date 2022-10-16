@@ -19,7 +19,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --experimental-fetch server.js"
+    "start": "node --experimental-fetch server.js"
   },
   "keywords": [],
   "author": "",
