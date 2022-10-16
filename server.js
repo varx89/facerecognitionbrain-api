@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const knex = require('knex');
 
+
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
@@ -18,6 +19,7 @@ const db = knex({
       database : 'smartbrain'
     }
   });
+  
 
 const app = express();
 // app.use(bodyParser.urlencoded({extended: false}));
@@ -31,10 +33,8 @@ const { response } = require('express');
 app.use(bodyParser.json());
 app.use(cors());
 
-
-app.get('/', (req, res) => {
-    // res.send(database.users);
-});
+//home
+app.get('/', (req, res) => {/* res.send(database.users)*/});
 
 //signin
 app.post('/signin', signin.handleSignin(db, bcrypt, bcryptSaltRounds));
@@ -45,10 +45,12 @@ app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcry
 //profile
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)});
 
-
+//profile
+app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)});
 
 //profile
 app.put('/image', (req, res) => { image.handleImage(req, res, db) });
+
 
 
 app.listen(port = 5000, () => {
