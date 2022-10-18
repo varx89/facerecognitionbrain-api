@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const knex = require('knex');
+const dotenv = require('dotenv');
 
 
 const register = require('./controllers/register');
@@ -9,20 +10,18 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
-const db = knex({
-    client: 'pg',
-    connection: {
-      host : process.env.DATABASE_URL,
-      ssl: true,
-    }
-  });
-  
-
+dotenv.config();
 const app = express();
+
+const db = knex({
+  client: 'pg',
+  connection: process.env.DATABASE_URL
+});
+
 // app.use(bodyParser.urlencoded({extended: false}));
 const bcrypt = require('bcrypt');
 const bcryptSaltRounds = 10;
-const { response } = require('express');
+
 
 // const myPlaintextPassword = 's0/\/\P4$$w0rD';
 // const someOtherPlaintextPassword = 'not_bacon';
@@ -31,7 +30,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //home
-app.get('/', (req, res) => { res.send('it werks!') });
+app.get('/', (req, res) => { res.send('it werks!' + process.env.DATABASE_UR) });
 
 //signin
 app.post('/signin', signin.handleSignin(db, bcrypt, bcryptSaltRounds));
