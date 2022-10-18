@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const knex = require('knex');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 
 
 const register = require('./controllers/register');
@@ -10,7 +10,7 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
-dotenv.config();
+// dotenv.config();
 const app = express();
 
 const db = knex({
