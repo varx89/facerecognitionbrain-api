@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //home
-app.get('/', (req, res) => { res.send('it werks!' + process.env.DATABASE_URL) });
+app.get('/', (req, res) => { res.send('it werks!') });
 
 //signin
 app.post('/signin', signin.handleSignin(db, bcrypt, bcryptSaltRounds));
