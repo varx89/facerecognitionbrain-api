@@ -1,4 +1,4 @@
-# FaceRecognition Backend
+# FaceRecognition Backend API
 
 This project was developed with nodeJS and PostgresSQL
 
